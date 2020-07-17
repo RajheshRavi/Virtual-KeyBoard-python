@@ -180,7 +180,7 @@ tk.Button(root,text = "                                                         
 
 # To Display the content
 tk.Button(root, text = 'Click here to preview', command = preview).place(x = 300,y = 210)               # Button to show preiew
-tk.Button(root, text = 'Click here to remove preview', command = previewClose).place(x = 460, y = 210)  # Button to close preview
+tk.Button(root, text = 'Click here to close preview', command = previewClose).place(x = 460, y = 210)  # Button to close preview
 tk.Button(root, text = 'Send the text to cursor in 10 seconds', command = send).place(x = 350, y = 300) # Button to write the text in cursor location
 clip = tk.Button(root, text = 'Click here to support', command = support)                               # Button to support in GitHub
 clip.place(x = 700, y = 300)
