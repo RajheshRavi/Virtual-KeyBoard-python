@@ -15,9 +15,9 @@ root.title('Virtual Keyboard')
 #root.iconbitmap()
 
 # Global Variables
-capt = False
-s = ''
-st = tk.StringVar()
+capt = False                                        # For Caps Lock
+s = ''                                              # To store the entered text
+st = tk.StringVar()                                 # To display the entered text if required 
 
 '''
 # Values
@@ -26,17 +26,18 @@ sy = {'~':'shift + `','{':'shift + [', '}':'shift + ]','|':'shift + \\',':':'shi
 '''
 
 # Functions for Button Command
-def setChar(a):
+def setChar(a):                                     # Function to return required Case of alphabets
     global capt
     if capt:
         return chr(ord(a)-ord('a')+ord('A'))
     else:
         return a
-def set():
+
+def set():                                          # Function to update the case of alphabets in buttons
     for i in range(26):
         butChar[i]['text']=setChar(chr(ord('a')+i))
 
-def caps():
+def caps():                                         # Function to respond the Caps Lock button
     global capt
     capt = not capt
     if capt:
@@ -46,7 +47,7 @@ def caps():
     #print(capt)
     set()
 
-def sendChar(i):
+def sendChar(i):                                    # Function to append corresponding character
     global s
     char = setChar(chr(ord('a')+i))
     # print in cursor location
@@ -55,28 +56,28 @@ def sendChar(i):
     #print(s)
     #key.write(char)
 
-def sendNum(i):
+def sendNum(i):                                     # Function to append corresponding digit
     global s
     #print(i)
     s+=str(i)
     #print(s)
 
-def sendSpC(i):
+def sendSpC(i):                                     # Function to append corresponding special character
     global s
     #print(i)
     s+=i
     #print(s)
 
-def bkSpace():
+def bkSpace():                                      # Function to remove the last character
     global s
     s = s[0:len(s)-1]
     #print(s)
 
-def prev():
+def prev():                                         # Function to display the string in GUI
     global st
     tk.Label(root,textvariable = st).place(x = 460, y = 260)
 
-def preview():
+def preview():                                      # Function to display preview
     global s, st
     #rt = tk.Tk()
     #rt.title('Preview')
@@ -85,12 +86,12 @@ def preview():
     prev()
     #rt.mainloop()
 
-def previewClose():
+def previewClose():                                 # Function to close preview
     global st
     st.set(' ')
     prev()
 
-def send():
+def send():                                         # Function to write the content in the cursor location
     global s
     time.sleep(10)
     # Wait for 10 sec to sends
@@ -112,12 +113,12 @@ def send():
 
 
 # Caps Lock and Backspace
-cap = tk.Button(root,text = "CapsLock",command = caps,width = 9)
+cap = tk.Button(root,text = "CapsLock",command = caps,width = 9)            # Button for Caps Lock
 cap.place(x = 10, y = 40)
-tk.Button(root,text = "Backspace",command = bkSpace).place(x = 10, y = 80)
+tk.Button(root,text = "Backspace",command = bkSpace).place(x = 10, y = 80)  # Button for Backspace
 
 # Characters
-butChar = []
+butChar = []                                        # List of buttons for Characters
 j = 100
 a =40
 b = 100
@@ -143,7 +144,7 @@ for i in range(20,26):
     b+= 40
 
 # Numbers
-butNum = []
+butNum = []                                     # List of buttons for Digits
 j = 100
 a =40
 b = 500
@@ -199,14 +200,14 @@ tk.Button(root,text = '"',command = partial(sendSpC,'"'),width = 2).place(x = 74
 tk.Button(root,text = "'",command = partial(sendSpC,"'"),width = 2).place(x = 780, y = 160) #32
 
 # Space
-tk.Button(root,text = "                                                               ",command = partial(sendSpC," ")).place(x = 140, y = 160) #33
+tk.Button(root,text = "                                                               ",command = partial(sendSpC," ")).place(x = 140, y = 160) # Button for Spacebar
 
 
 
 # To Display the content
-tk.Button(root, text = 'Click here to preview', command = preview).place(x = 300,y = 210)
-tk.Button(root, text = 'Click here to remove preview', command = previewClose).place(x = 460, y = 210)
-tk.Button(root, text = 'Send the text to cursor in 10 seconds', command = send).place(x = 350, y = 300)
+tk.Button(root, text = 'Click here to preview', command = preview).place(x = 300,y = 210)               # Button to show preiew
+tk.Button(root, text = 'Click here to remove preview', command = previewClose).place(x = 460, y = 210)  # Button to close preview
+tk.Button(root, text = 'Send the text to cursor in 10 seconds', command = send).place(x = 350, y = 300) # Button to write the text in cursor location
 
 
 root.mainloop()
