@@ -1,4 +1,7 @@
 '''
+This Poject is developed by Rajhesh R
+GitHut Link : https://github.com/RajheshRavi
+Mail Id : rrajheshgithub@gmail.com
 Icon Form Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 '''
 
@@ -9,21 +12,15 @@ from functools import partial
 import time
 
 # GUI
-root = tk.Tk()
-root.geometry("980x350")
-root.title('Virtual Keyboard')
-#root.iconbitmap()
+root = tk.Tk()                                      # Creating GUI Object
+root.geometry("980x350")                            # Dimention Setup
+root.title('Virtual Keyboard')                      # Title Setup
+root.iconbitmap('Keyboard.ico')                     # Icon Setup
 
 # Global Variables
 capt = False                                        # For Caps Lock
 s = ''                                              # To store the entered text
 st = tk.StringVar()                                 # To display the entered text if required 
-
-'''
-# Values
-di = {'!':'shift + 1','@':'shift + 2','#':'shift + 3','$':'shift + 4','%':'shift + 5','^':'shift + 6','&':'shift + 7','*':'shift + 8','(':'shift + 9',')':'shift + 0'}
-sy = {'~':'shift + `','{':'shift + [', '}':'shift + ]','|':'shift + \\',':':'shift + ;','\":"shift +\'','<':'shift + <','>':'shift + .','?':'shift + ?','_':'shift + _',',':'<'}
-'''
 
 # Functions for Button Command
 def setChar(a):                                     # Function to return required Case of alphabets
@@ -44,29 +41,20 @@ def caps():                                         # Function to respond the Ca
         cap.configure(relief='sunken')
     else:
         cap.configure(relief='raised')
-    #print(capt)
     set()
 
 def sendChar(i):                                    # Function to append corresponding character
     global s
     char = setChar(chr(ord('a')+i))
-    # print in cursor location
-    #print(char)
     s+=char
-    #print(s)
-    #key.write(char)
 
 def sendNum(i):                                     # Function to append corresponding digit
     global s
-    #print(i)
     s+=str(i)
-    #print(s)
 
 def sendSpC(i):                                     # Function to append corresponding special character
     global s
-    #print(i)
     s+=i
-    #print(s)
 
 def bkSpace():                                      # Function to remove the last character
     global s
@@ -79,12 +67,8 @@ def prev():                                         # Function to display the st
 
 def preview():                                      # Function to display preview
     global s, st
-    #rt = tk.Tk()
-    #rt.title('Preview')
     st.set(s)
-    #print(st.get())
     prev()
-    #rt.mainloop()
 
 def previewClose():                                 # Function to close preview
     global st
@@ -93,24 +77,17 @@ def previewClose():                                 # Function to close preview
 
 def send():                                         # Function to write the content in the cursor location
     global s
-    time.sleep(10)
-    # Wait for 10 sec to sends
+    time.sleep(10)          # Wait for 10 sec to write in cursor location
     key.write(s)
-    '''
-    for i in s:
-        if i in di:
-            key.send(di[i])
-        elif i in sy:
-            key.send(sy[i])
-        elif ord(i) >= 'A' and ord(i) <= 'Z':
-            key.send('shift + '+i)
-        elif i == ' ':
-            key.send()
-        else:
-            key.send(i)
-        print(i)
-    '''
 
+def support():
+    rt = tk.Tk()
+    rt.withdraw()
+    rt.clipboard_clear()                                                              # Clearing the clipboard
+    rt.clipboard_append('https://github.com/RajheshRavi/Virtual-KeyBoard-python')     # Appending the link to the Repositary to th clipboard
+    rt.update()                                                                       # Updating the clipboard
+    rt.destroy()    
+    clip.configure(text = 'Link copied to clipboard')                                 # Updating the Text in the Button
 
 # Caps Lock and Backspace
 cap = tk.Button(root,text = "CapsLock",command = caps,width = 9)            # Button for Caps Lock
@@ -119,9 +96,8 @@ tk.Button(root,text = "Backspace",command = bkSpace).place(x = 10, y = 80)  # Bu
 
 # Characters
 butChar = []                                        # List of buttons for Characters
-j = 100
-a =40
-b = 100
+a =40           # Y-Coordinate of Button
+b = 100         # X-Coordinate of Button
 for i in range(10):
     temp = tk.Button(root, text = chr(ord('a')+i), command = partial(sendChar,i),width = 2)
     temp.place( x = b, y = a)
@@ -146,8 +122,8 @@ for i in range(20,26):
 # Numbers
 butNum = []                                     # List of buttons for Digits
 j = 100
-a =40
-b = 500
+a =40           # Y-Coordinate of Button
+b = 500         # X-Coordinate of Button
 for i in range(7,10):
     butNum.append(tk.Button(root, text = str(i), command = partial(sendNum,i),width = 2).place( x = b, y = a))
     b+=40
@@ -202,12 +178,10 @@ tk.Button(root,text = "'",command = partial(sendSpC,"'"),width = 2).place(x = 78
 # Space
 tk.Button(root,text = "                                                               ",command = partial(sendSpC," ")).place(x = 140, y = 160) # Button for Spacebar
 
-
-
 # To Display the content
 tk.Button(root, text = 'Click here to preview', command = preview).place(x = 300,y = 210)               # Button to show preiew
 tk.Button(root, text = 'Click here to remove preview', command = previewClose).place(x = 460, y = 210)  # Button to close preview
 tk.Button(root, text = 'Send the text to cursor in 10 seconds', command = send).place(x = 350, y = 300) # Button to write the text in cursor location
-
-
+clip = tk.Button(root, text = 'Click here to support', command = support)                               # Button to support in GitHub
+clip.place(x = 700, y = 300)
 root.mainloop()

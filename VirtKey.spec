@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['VirtKey.py'],
-             pathex=['G:\\Package\\Sem 8\\Proj\\Virtual Keyboard'],
+             pathex=['G:\\Package\\Sem 8\\Proj\\Virtual Keyboard\\Virtual-Keyboard'],
              binaries=[],
              datas=[],
              hiddenimports=[],
