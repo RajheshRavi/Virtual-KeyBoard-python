@@ -2,7 +2,7 @@
 This Poject is developed by Rajhesh R
 GitHut Link : https://github.com/RajheshRavi
 Mail Id : rrajheshgithub@gmail.com
-Icon Form Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 '''
 
 # Module Imports
