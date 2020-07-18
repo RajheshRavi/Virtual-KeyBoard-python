@@ -12,3 +12,5 @@ Click the button 'Click here to preview' to view the content entered. Click the 
 Click the button 'Send the text to cursor in 10 seconds' so that user has 10 seconds to place the cursor in the location where the application sends the text entered.
 
 The button 'Click here to support', copies the link of this Repository to the clipboard.
+
+Executable (.exe) file is present in Build folder.
