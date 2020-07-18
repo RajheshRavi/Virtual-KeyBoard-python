@@ -13,4 +13,4 @@ Click the button 'Send the text to cursor in 10 seconds' so that user has 10 sec
 
 The button 'Click here to support', copies the link of this Repository to the clipboard.
 
-Executable (.exe) file is present in Build folder.
+Executable (.exe) file is present in Dist folder.
